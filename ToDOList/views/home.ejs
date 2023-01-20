@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="/css/home.css">
+
+<form action="add-task" method="post">
+        <section id="description">
+                <div>
+                        <p class="label">
+                                <%=descriptionText%>
+                         </p>
+                         <input type="text" name="description" id="descriptionInput" placeholder="<%=descriptionPlaceholder%>" required >
+                 
+                </div>
+        
+        </section>
+        
+        <section id="category-and-duedate">
+                <div>
+                        <p class="label">
+                                <%= categoryText%>
+                        </p>
+                        <select name="category" required >
+                                        <% for ( let i of categoryList) {%>
+                                              <option name="<%=i%>"><%=i  %> </option> 
+                                        <% } %> 
+                                
+        
+                        </select>
+                </div>
+                <div>
+                        <p class="label">
+                                <%= dueDateText %> 
+                        </p>
+                        <input type="date" name="date" required>
+                </div>
+        
+        </section>
+        
+        <section id="buttons">
+        
+              
+                <button class="button" id="addButton" onclick="Add()"  name="add">
+                    
+                        <p>
+                                <i class="fa-solid fa-plus"></i>
+                                <%=button1  %> 
+                        </p>
+                </button>
+        
+                        <a href="/delete-task"  id="deleteButton">
+                        <p>
+                                <i class="fa-solid fa-trash"></i>
+                                <%=button2  %> 
+                        </p>
+                </a>
+       
+        
+        </section>
+</form>
+
+<form action="delete-todo" method="get">
+        <div>
+                <% for(item of TODOs){ %>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;border-bottom: 1px solid lightgray; margin-right: 20px;">
+                
+                    <div style="display: flex; flex-direction: row; align-items: center;" >
+                        <input type="checkbox" value="<%= item._id %> " class="check-box">  
+                        <p>
+                                <%= item.description  %> 
+                        </p>
+                    </div>
+                    <div >
+                        <p>
+                          <%= item.category  %> 
+                        </p>
+                </div>
+                </div>
+                        <% } %>
+                        
+                        
+                
+
+        </div> 
+        
+    
+</form>
+
+
+<script src="https://kit.fontawesome.com/cab6a3a90b.js" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
